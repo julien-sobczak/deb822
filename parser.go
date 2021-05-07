@@ -31,7 +31,7 @@ func (p *Parser) Parse() (Document, error) {
 		} else if err != nil {
 			return ret, err
 		}
-		if paragraph.Value("Package") == "" {
+		if len(paragraph.Values) == 0 {
 			// Ignore
 			continue
 		}
@@ -63,7 +63,7 @@ func (p *Parser) next() (*Paragraph, error) {
 
 		if line == "\n" {
 			/* Lines are ended by a blank line; so we're able to go ahead
-			 * and return this guy as-is. All set. Done. Finished. */
+			* and return this guy as-is. All set. Done. Finished. */
 			return &paragraph, nil
 		}
 
